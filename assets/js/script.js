@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function(){
     let buttons = this.getElementsByTagName("button");
 
     for (let button of buttons) {
-        button.addEventListener('click', function() {
+        button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -37,8 +37,24 @@ function runGame(gameType) {
     }
 }
 
+
+/**
+ * Checks if the answer is matching the first element in 
+ * the returned calculateCorrectAnswer array
+ */
 function checkAnswer() {
+
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
+
+    if (isCorrect) {
+        alert("hey you got it right! :D");
+    } else {
+        alert(`You answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`);
+    }
     
+    runGame(calculatedAnswer[1]);
 }
 
 /**
