@@ -89,7 +89,7 @@ function calculateCorrectAnswer() {
     } else if (operator === "-") {
       return [operand1 - operand2, "subtract"]
     }else if (operator === "/") {
-        return [operand1 / operand2, "division"]
+        return [operand1 * operand2 / operand2, "division"]
     } else {
         alert(`unimplemented operator ${operator}`);
         throw `unimplemented operator ${operator}. Aborting!`;
